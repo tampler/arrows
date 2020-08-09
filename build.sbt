@@ -38,9 +38,9 @@ lazy val `arrows-stdlib` =
   crossProject.crossType(superPure)
     .settings(commonSettings)
     .settings(
-      crossScalaVersions := Seq("2.12.5"),
+      crossScalaVersions := Seq("2.12.12"),
       name := "arrows-stdlib",
-      libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.4" % "test",
+      libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % "test",
       scoverage.ScoverageKeys.coverageMinimum := 60,
       scoverage.ScoverageKeys.coverageFailOnMinimum := false)
     .jsSettings(
@@ -53,9 +53,9 @@ lazy val `arrows-stdlib-js` = `arrows-stdlib`.js.settings(test := {})
 lazy val `arrows-twitter` = project
   .settings(commonSettings)
   .settings(
-    crossScalaVersions := Seq("2.11.12", "2.12.5"),
+    crossScalaVersions := Seq("2.12.12"),
     libraryDependencies ++= Seq(
-      "com.twitter" %% "util-core" % "18.9.0"
+      "com.twitter" %% "util-core" % "20.7.0"
     ),
     scoverage.ScoverageKeys.coverageMinimum := 60,
     scoverage.ScoverageKeys.coverageFailOnMinimum := false
@@ -67,12 +67,12 @@ lazy val scalaz8Effect =
 lazy val `arrows-benchmark` = project
   .settings(commonSettings)
   .settings(
-    crossScalaVersions := Seq("2.12.5"),
+    crossScalaVersions := Seq("2.12.12"),
     resolvers += Resolver.sonatypeRepo("snapshots"),
     libraryDependencies ++= Seq(
-      "io.monix" %% "monix" % "3.0.0-RC1",
-      "io.trane" % "future-java" % "0.2.2",
-      "org.typelevel" %% "cats-effect" % "0.10"
+      "io.monix" %% "monix" % "3.2.2",
+      "io.trane" % "future-java" % "0.3.2",
+      "org.typelevel" %% "cats-effect" % "2.1.4"
     )
   )
   .dependsOn(`arrows-stdlib-jvm`, `arrows-twitter`, scalaz8Effect)
@@ -128,7 +128,7 @@ lazy val commonSettings = Seq(
     "-Ywarn-unused-import"
     ),
   libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.0.4" % Test
+      "org.scalatest" %% "scalatest" % "3.0.8" % Test
     ),
   ScalariformKeys.preferences := ScalariformKeys.preferences.value
     .setPreference(AlignParameters, true)
